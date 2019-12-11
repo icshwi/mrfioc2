@@ -293,7 +293,7 @@ record(ao, "$(PTIME)Clock-SP") {
   field(DTYP, "Obj Prop double")
   field(OUT , "@OBJ=$(OBJ), PROP=Timestamp Clock")
   field(DESC, "Timestamp tick rate")
-  field(VAL , "0.0")
+  field(VAL , "$(FEVT)")
   field(EGU , "MHz")
   field(LINR, "LINEAR")
   field(ESLO, "1e-6")

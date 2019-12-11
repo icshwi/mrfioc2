@@ -679,7 +679,7 @@ EVRMRM::setSourceTS(TSSource src)
     switch(src){
     case TSSourceInternal:
         // div!=0 selects src internal
-        div=(epicsUInt16)(eclk/clk);
+        div=roundToUInt(eclk/clk, 0xffff);
         break;
     case TSSourceEvent:
         BITCLR(NAT,32, base, Control, Control_tsdbus);
@@ -721,7 +721,14 @@ EVRMRM::clockTSSet(double clk)
     TSSource src=SourceTS();
     double eclk=clock();
 
-    if(clk>eclk*1.01 || clk==0.0)
+    /* There is an issue with this and the embedded EVRs of the mTCA EVM vers
+     * 280b0207. The register holding the fractional synthesizer configuration
+     * word is empty, so eclk always resolves to 0, and so does clk. This messes
+     * up with the delay generators width/delay settings. By removing this check
+     * clockTS() can be used for the calculation of the width/delay.
+     * if(clk>eclk*1.01 || clk==0.0)
+     */
+    if(clk==0.0)
         clk=eclk;
 
     SCOPED_LOCK(evrLock);
