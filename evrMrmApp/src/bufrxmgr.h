@@ -15,9 +15,6 @@
 
 #include <ellLib.h>
 #include <callback.h>
-#include "mrf/databuf.h"
-
-
 
 #include "mrf/databuf.h"
 
@@ -42,7 +39,7 @@ public:
      * received then the function is invoked with 'len' set to the
      * length of the discarded buffer and 'buf' NULL.
      */
-    virtual void dataRxError(dataBufComplete, void*);
+    virtual void dataRxError(dataBufComplete, void*) OVERRIDE FINAL;
 
     /**@brief Register to receive data buffers
      *
@@ -50,11 +47,11 @@ public:
      *@param fptr[in] Function pointer invoken after Rx
      *@param arg[in] Arbitrary pointer passed to completion function
      */
-    virtual void dataRxAddReceive(dataBufComplete fptr, void* arg=0);
+    virtual void dataRxAddReceive(dataBufComplete fptr, void* arg=0) OVERRIDE FINAL;
 
     /**@brief Unregister
      */
-    virtual void dataRxDeleteReceive(dataBufComplete fptr, void* arg=0);
+    virtual void dataRxDeleteReceive(dataBufComplete fptr, void* arg=0) OVERRIDE FINAL;
 
 private:
     epicsMutex guard;

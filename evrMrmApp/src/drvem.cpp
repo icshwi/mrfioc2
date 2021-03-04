@@ -1050,12 +1050,17 @@ void EVRMRM::setTimeSrc(epicsUInt32 raw)
     }
     timeSrcMode_t mode((timeSrcMode_t)raw);
 
-    SCOPED_LOCK(evrLock);
+    bool changed;
+    {
+        SCOPED_LOCK(evrLock);
 
-    if(timeSrcMode!=mode)
+        changed = timeSrcMode!=mode;
+
+        timeSrcMode = mode;
+    }
+
+    if(changed)
         softSecondsSrc(mode==SysClk);
-
-    timeSrcMode = mode;
 }
 
 OBJECT_BEGIN2(EVRMRM, EVR)
@@ -1251,11 +1256,11 @@ EVRMRM::drain_fifo()
     SCOPED_LOCK2(evrLock, guard);
 
     while(true) {
-        int code, err;
+        int msg, err;
 
         guard.unlock();
 
-        err=drain_fifo_wakeup.receive(&code, sizeof(code));
+        err=drain_fifo_wakeup.receive(&msg, sizeof(msg));
 
         if (err<0) {
             errlogPrintf("FIFO wakeup error %d\n",err);
@@ -1263,7 +1268,7 @@ EVRMRM::drain_fifo()
             guard.lock();
             continue;
 
-        } else if(code==1) {
+        } else if(msg==1) {
             // Request thread stop
             guard.lock();
             break;
@@ -1285,38 +1290,74 @@ EVRMRM::drain_fifo()
             if (status&IRQ_RXErr)
                 break;
 
-            epicsUInt32 evt=READ32(base, EvtFIFOCode);
-            if (!evt)
+            epicsUInt32 code=READ32(base, EvtFIFOCode);
+            if (!code)
                 break;
 
-            if (evt>NELEMENTS(events)) {
+            if (code>NELEMENTS(events)) {
                 // BUG: we get occasional corrupt VME reads of this register
                 // Fixed in firmware.  Feb 2011
-                epicsUInt32 evt2=READ32(base, EvtFIFOCode);
-                if (evt2>NELEMENTS(events)) {
-                    printf("Really weird event 0x%08x 0x%08x\n", evt, evt2);
+                epicsUInt32 code2=READ32(base, EvtFIFOCode);
+                if (code2>NELEMENTS(events)) {
+                    printf("Really weird event 0x%08x 0x%08x\n", code, code2);
                     break;
                 } else
-                    evt=evt2;
+                    code=code2;
             }
-            evt &= 0xff; // (in)santity check
+            code &= 0xff; // (in)santity check
 
             count_fifo_events++;
 
-            events[evt].last_sec=READ32(base, EvtFIFOSec);
-            events[evt].last_evt=READ32(base, EvtFIFOEvt);
+            eventCode& evt = events[code];
 
-            if (events[evt].again) {
+            // cache of last time
+            evt.last_sec=READ32(base, EvtFIFOSec);
+            evt.last_evt=READ32(base, EvtFIFOEvt);
+
+            // update any timestamp buffers
+            for(eventCode::tbufs_t::const_iterator it(evt.tbufs.begin()), end(evt.tbufs.end());
+                it!=end; ++it)
+            {
+                EVRMRMTSBuffer* tbuf = *it;
+
+                if(tbuf->timeEvt==code) {
+                    EVRMRMTSBuffer::ebuf_t& buf = tbuf->ebufs[tbuf->active];
+                    // add code to buffer
+                    if(buf.pos < buf.buf.size()) {
+                        // append raw time to buffer
+                        buf.buf[buf.pos].secPastEpoch = evt.last_sec;
+                        buf.buf[buf.pos].nsec = evt.last_evt;
+                        buf.pos++;
+
+                    } else {
+                        buf.drop = true;
+                        tbuf->dropped++;
+                    }
+                }
+
+                if(tbuf->flushEvt==code) {
+                    // flush
+                    EVRMRMTSBuffer::ebuf_t& active = tbuf->ebufs[tbuf->active];
+                    active.flushtime.secPastEpoch = evt.last_sec;
+                    active.flushtime.nsec = evt.last_evt;
+
+                    active.ok &= convertTS(&active.flushtime);
+
+                    tbuf->doFlush();
+                }
+            }
+
+            if (evt.again) {
                 // ignore extra events in buffer.
-            } else if (events[evt].waitingfor>0) {
+            } else if (evt.waitingfor>0) {
                 // already queued, but received again before all
                 // callbacks finished.  Un-map event until complete
-                events[evt].again=true;
-                specialSetMap(evt, ActionFIFOSave, false);
+                evt.again=true;
+                specialSetMap(code, ActionFIFOSave, false);
                 count_FIFO_sw_overrate++;
             } else {
                 // needs to be queued
-                eventInvoke(events[evt]);
+                eventInvoke(evt);
             }
 
         }

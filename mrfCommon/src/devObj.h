@@ -101,6 +101,19 @@ struct addr : public addrBase {
 epicsShareExtern const
 linkOptionDef objdef[];
 
+struct epicsShareClass CurrentRecord {
+    template<typename Rec>
+    explicit CurrentRecord(Rec* prec)
+    {
+        (void)prec->dpvt;
+        set((dbCommon*)prec);
+    }
+    ~CurrentRecord();
+    static
+    dbCommon* get();
+    void set(dbCommon* prec);
+};
+
 template<dsxt* D>
 static inline
 long init_dset(int i)
@@ -166,7 +179,8 @@ try {
 
     mrf::auto_ptr<property<P> > prop = o->getProperty<P>(a->prop);
     if(!prop.get()) {
-        errlogPrintf("%s: '%s' lacks property '%s' of required type\n", prec->name, o->name().c_str(), a->prop);
+        errlogPrintf("%s: '%s' lacks property '%s' of required type %s\n",
+                     prec->name, o->name().c_str(), a->prop, typeid(P).name());
         return S_db_errArg;
     }
 
@@ -231,8 +245,11 @@ try {
 
     mrf::auto_ptr<property<IOSCANPVT> > up = prop->O->getProperty<IOSCANPVT>(prop->prop);
 
-    if(up.get())
+    if(up.get()) {
         *io = up->get();
+    } else {
+        errlogPrintf("%s Warning: I/O Intr not supported by PROP=%s\n", prec->name, prop->prop);
+    }
 
     return 0;
 } catch(std::exception& e) {
