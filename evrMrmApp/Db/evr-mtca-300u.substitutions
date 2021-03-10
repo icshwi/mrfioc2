@@ -255,6 +255,39 @@ file "evrdcpulser.template"
 file "evrin.db"
 {pattern
 {IN, INTRIG, INCODE, OBJ, DESC}
+# Front panel inputs 4
 {"$(SYS){$(D)-In:0}", "$(SYS){$(D)-In:0}Trig:", "$(SYS){$(D)-In:0}Code:", "$(EVR):FPIn0", "IN0 (TTL)"}
 {"$(SYS){$(D)-In:1}", "$(SYS){$(D)-In:1}Trig:", "$(SYS){$(D)-In:1}Code:", "$(EVR):FPIn1", "IN1 (TTL)"}
+{"$(SYS){$(D)-In:2}", "$(SYS){$(D)-In:2}Trig:", "$(SYS){$(D)-In:2}Code:", "$(EVR):FPIn2", "IN2 (TTL)"}
+{"$(SYS){$(D)-In:3}", "$(SYS){$(D)-In:3}Trig:", "$(SYS){$(D)-In:3}Code:", "$(EVR):FPIn3", "IN3 (TTL)"}
+# Univ inputs 20
+{"$(SYS){$(D)-UnivIn:0}", "$(SYS){$(D)-UnivIn:0}Trig:", "$(SYS){$(D)-UnivIn:0}Code:", "$(EVR):FPIn4", "UnivIN0 (TTL)"}
+{"$(SYS){$(D)-UnivIn:1}", "$(SYS){$(D)-UnivIn:1}Trig:", "$(SYS){$(D)-UnivIn:1}Code:", "$(EVR):FPIn5", "UnivIN1 (TTL)"}
+{"$(SYS){$(D)-UnivIn:2}", "$(SYS){$(D)-UnivIn:2}Trig:", "$(SYS){$(D)-UnivIn:2}Code:", "$(EVR):FPIn6", "UnivIN2 (TTL)"}
+{"$(SYS){$(D)-UnivIn:3}", "$(SYS){$(D)-UnivIn:3}Trig:", "$(SYS){$(D)-UnivIn:3}Code:", "$(EVR):FPIn7", "UnivIN3 (TTL)"}
+{"$(SYS){$(D)-UnivIn:4}", "$(SYS){$(D)-UnivIn:4}Trig:", "$(SYS){$(D)-UnivIn:4}Code:", "$(EVR):FPIn8", "UnivIN4 (TTL)"}
+{"$(SYS){$(D)-UnivIn:5}", "$(SYS){$(D)-UnivIn:5}Trig:", "$(SYS){$(D)-UnivIn:5}Code:", "$(EVR):FPIn9", "UnivIN5 (TTL)"}
+{"$(SYS){$(D)-UnivIn:6}", "$(SYS){$(D)-UnivIn:6}Trig:", "$(SYS){$(D)-UnivIn:6}Code:", "$(EVR):FPIn10", "UnivIN6 (TTL)"}
+{"$(SYS){$(D)-UnivIn:7}", "$(SYS){$(D)-UnivIn:7}Trig:", "$(SYS){$(D)-UnivIn:7}Code:", "$(EVR):FPIn11", "UnivIN7 (TTL)"}
+{"$(SYS){$(D)-UnivIn:8}", "$(SYS){$(D)-UnivIn:8}Trig:", "$(SYS){$(D)-UnivIn:8}Code:", "$(EVR):FPIn12", "UnivIN8 (TTL)"}
+{"$(SYS){$(D)-UnivIn:9}", "$(SYS){$(D)-UnivIn:9}Trig:", "$(SYS){$(D)-UnivIn:9}Code:", "$(EVR):FPIn13", "UnivIN9 (TTL)"}
+{"$(SYS){$(D)-UnivIn:10}", "$(SYS){$(D)-UnivIn:10}Trig:", "$(SYS){$(D)-UnivIn:10}Code:", "$(EVR):FPIn14", "UnivIN10 (TTL)"}
+{"$(SYS){$(D)-UnivIn:11}", "$(SYS){$(D)-UnivIn:11}Trig:", "$(SYS){$(D)-UnivIn:11}Code:", "$(EVR):FPIn15", "UnivIN11 (TTL)"}
+{"$(SYS){$(D)-UnivIn:12}", "$(SYS){$(D)-UnivIn:12}Trig:", "$(SYS){$(D)-UnivIn:12}Code:", "$(EVR):FPIn16", "UnivIN12 (TTL)"}
+{"$(SYS){$(D)-UnivIn:13}", "$(SYS){$(D)-UnivIn:13}Trig:", "$(SYS){$(D)-UnivIn:13}Code:", "$(EVR):FPIn17", "UnivIN13 (TTL)"}
+{"$(SYS){$(D)-UnivIn:14}", "$(SYS){$(D)-UnivIn:14}Trig:", "$(SYS){$(D)-UnivIn:14}Code:", "$(EVR):FPIn18", "UnivIN14 (TTL)"}
+{"$(SYS){$(D)-UnivIn:15}", "$(SYS){$(D)-UnivIn:15}Trig:", "$(SYS){$(D)-UnivIn:15}Code:", "$(EVR):FPIn19", "UnivIN15 (TTL)"}
+{"$(SYS){$(D)-UnivIn:16}", "$(SYS){$(D)-UnivIn:16}Trig:", "$(SYS){$(D)-UnivIn:16}Code:", "$(EVR):FPIn20", "UnivIN16 (TTL)"}
+{"$(SYS){$(D)-UnivIn:17}", "$(SYS){$(D)-UnivIn:17}Trig:", "$(SYS){$(D)-UnivIn:17}Code:", "$(EVR):FPIn21", "UnivIN17 (TTL)"}
+{"$(SYS){$(D)-UnivIn:18}", "$(SYS){$(D)-UnivIn:18}Trig:", "$(SYS){$(D)-UnivIn:18}Code:", "$(EVR):FPIn22", "UnivIN18 (TTL)"}
+{"$(SYS){$(D)-UnivIn:19}", "$(SYS){$(D)-UnivIn:19}Trig:", "$(SYS){$(D)-UnivIn:19}Code:", "$(EVR):FPIn23", "UnivIN19 (TTL)"}
+## Backplane inputs 8
+{"$(SYS){$(D)-BPIn:0}", "$(SYS){$(D)-BPIn:0}Trig:", "$(SYS){$(D)-BPIn:0}Code:", "$(EVR):FPIn24", "BPIN0 (MLVDS)"}
+{"$(SYS){$(D)-BPIn:1}", "$(SYS){$(D)-BPIn:1}Trig:", "$(SYS){$(D)-BPIn:1}Code:", "$(EVR):FPIn25", "BPIN1 (MLVDS)"}
+{"$(SYS){$(D)-BPIn:2}", "$(SYS){$(D)-BPIn:2}Trig:", "$(SYS){$(D)-BPIn:2}Code:", "$(EVR):FPIn26", "BPIN2 (MLVDS)"}
+{"$(SYS){$(D)-BPIn:3}", "$(SYS){$(D)-BPIn:3}Trig:", "$(SYS){$(D)-BPIn:3}Code:", "$(EVR):FPIn27", "BPIN3 (MLVDS)"}
+{"$(SYS){$(D)-BPIn:4}", "$(SYS){$(D)-BPIn:4}Trig:", "$(SYS){$(D)-BPIn:4}Code:", "$(EVR):FPIn28", "BPIN4 (MLVDS)"}
+{"$(SYS){$(D)-BPIn:5}", "$(SYS){$(D)-BPIn:5}Trig:", "$(SYS){$(D)-BPIn:5}Code:", "$(EVR):FPIn29", "BPIN5 (MLVDS)"}
+{"$(SYS){$(D)-BPIn:6}", "$(SYS){$(D)-BPIn:6}Trig:", "$(SYS){$(D)-BPIn:6}Code:", "$(EVR):FPIn30", "BPIN6 (MLVDS)"}
+{"$(SYS){$(D)-BPIn:7}", "$(SYS){$(D)-BPIn:7}Trig:", "$(SYS){$(D)-BPIn:7}Code:", "$(EVR):FPIn31", "BPIN7 (MLVDS)"}
 }

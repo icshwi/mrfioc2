@@ -115,8 +115,12 @@ pattern
 {"$(SYS){$(D)-Out:RB07}", "$(EVR):FrontUnivOut7", "UNIV7", 61}
 {"$(SYS){$(D)-Out:RB08}", "$(EVR):FrontUnivOut8", "UNIV8", 61}
 {"$(SYS){$(D)-Out:RB09}", "$(EVR):FrontUnivOut9", "UNIV9", 61}
-{"$(SYS){$(D)-Out:RB10}", "$(EVR):FrontUnivOut10","UNIV10", 61}
-{"$(SYS){$(D)-Out:RB11}", "$(EVR):FrontUnivOut11","UNIV11", 61}
+{"$(SYS){$(D)-Out:RB10}", "$(EVR):FrontUnivOut10", "UNIV10", 61}
+{"$(SYS){$(D)-Out:RB11}", "$(EVR):FrontUnivOut11", "UNIV11", 61}
+{"$(SYS){$(D)-Out:RB12}", "$(EVR):FrontUnivOut12", "UNIV12", 61}
+{"$(SYS){$(D)-Out:RB13}", "$(EVR):FrontUnivOut13", "UNIV13", 61}
+{"$(SYS){$(D)-Out:RB14}", "$(EVR):FrontUnivOut14", "UNIV14", 61}
+{"$(SYS){$(D)-Out:RB15}", "$(EVR):FrontUnivOut15", "UNIV15", 61}
 }
 
 file "mrmevroutint.db"
@@ -243,6 +247,31 @@ file "evrdcpulser.template"
 file "evrin.db"
 {pattern
 {IN, OBJ, DESC}
-{"$(SYS){$(D)-In:0}", "$(EVR):FPIn0", "IN0 (TTL)"}
-{"$(SYS){$(D)-In:1}", "$(EVR):FPIn1", "IN1 (TTL)"}
+# Front panel inputs 4
+{"$(SYS){$(D)-In:0}", "$(EVR):FPIn0", "FPIN0 (TTL)"}
+{"$(SYS){$(D)-In:1}", "$(EVR):FPIn1", "FPIN1 (TTL)"}
+{"$(SYS){$(D)-In:2}", "$(EVR):FPIn2", "FPIN2 (TTL)"}
+{"$(SYS){$(D)-In:3}", "$(EVR):FPIn3", "FPIN3 (TTL)"}
+# Univ inputs 20
+{"$(SYS){$(D)-UnivIn:0}", "$(EVR):FPIn4", "UnivIN0 (TTL)"}
+{"$(SYS){$(D)-UnivIn:1}", "$(EVR):FPIn5", "UnivIN1 (TTL)"}
+{"$(SYS){$(D)-UnivIn:2}", "$(EVR):FPIn6", "UnivIN2 (TTL)"}
+{"$(SYS){$(D)-UnivIn:3}", "$(EVR):FPIn7", "UnivIN3 (TTL)"}
+{"$(SYS){$(D)-UnivIn:4}", "$(EVR):FPIn8", "UnivIN4 (TTL)"}
+{"$(SYS){$(D)-UnivIn:5}", "$(EVR):FPIn9", "UnivIN5 (TTL)"}
+{"$(SYS){$(D)-UnivIn:6}", "$(EVR):FPIn10", "UnivIN6 (TTL)"}
+{"$(SYS){$(D)-UnivIn:7}", "$(EVR):FPIn11", "UnivIN7 (TTL)"}
+{"$(SYS){$(D)-UnivIn:8}", "$(EVR):FPIn12", "UnivIN8 (TTL)"}
+{"$(SYS){$(D)-UnivIn:9}", "$(EVR):FPIn13", "UnivIN9 (TTL)"}
+{"$(SYS){$(D)-UnivIn:10}", "$(EVR):FPIn14", "UnivIN10 (TTL)"}
+{"$(SYS){$(D)-UnivIn:11}", "$(EVR):FPIn15", "UnivIN11 (TTL)"}
+{"$(SYS){$(D)-UnivIn:12}", "$(EVR):FPIn16", "UnivIN12 (TTL)"}
+{"$(SYS){$(D)-UnivIn:13}", "$(EVR):FPIn17", "UnivIN13 (TTL)"}
+{"$(SYS){$(D)-UnivIn:14}", "$(EVR):FPIn18", "UnivIN14 (TTL)"}
+{"$(SYS){$(D)-UnivIn:15}", "$(EVR):FPIn19", "UnivIN15 (TTL)"}
+{"$(SYS){$(D)-UnivIn:16}", "$(EVR):FPIn20", "UnivIN16 (TTL)"}
+{"$(SYS){$(D)-UnivIn:17}", "$(EVR):FPIn21", "UnivIN17 (TTL)"}
+{"$(SYS){$(D)-UnivIn:18}", "$(EVR):FPIn22", "UnivIN18 (TTL)"}
+{"$(SYS){$(D)-UnivIn:19}", "$(EVR):FPIn23", "UnivIN19 (TTL)"}
+## Backplane inputs 8
 }
