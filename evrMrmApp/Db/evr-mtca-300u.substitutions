@@ -1,4 +1,4 @@
-# Record set for a mTCA-EVR-300
+# Record set for a mTCA-EVR-300U
 #
 # Macros:
 #  EVR = Card name (same as mrmEvrSetupPCI())
@@ -122,6 +122,14 @@ pattern
 {"$(SYS){$(D)-Out:Back7}", "$(SYS){$(D)-Out:Back7}Src:", "$(EVR):Backplane7", "TX20 (7)", 61}
 {"$(SYS){$(D)-Out:TCLKA}", "$(SYS){$(D)-Out:TCLKA}Src:", "$(EVR):FrontUnivOut16", "TCLKA", 61}
 {"$(SYS){$(D)-Out:TCLKB}", "$(SYS){$(D)-Out:TCLKB}Src:", "$(EVR):FrontUnivOut17", "TCLKB", 61}
+}
+
+# mTCA-EVR-300U supports fine delay for all its UNIVs.
+file "mrmevrdlymodule.template"
+{pattern
+{P, OBJ, SLOT}
+{"$(SYS){$(D)-Out:DlyUniv0_1}", "$(EVR)", "0"}
+{"$(SYS){$(D)-Out:DlyUniv2_3}", "$(EVR)", "1"}
 }
 
 file "mrmevroutint.db"
