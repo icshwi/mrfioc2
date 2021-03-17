@@ -50,6 +50,7 @@ RTEMS >= 4.9.x, vxWorks >=6.7, or Linux >= 2.6.26.
  - PXI-EVG-220
  - PXI-EVG-230
  - cPCI-EVG-300
+ - mTCA-EVM-300
 
 - Event Receivers
  - VME-EVR-230RF
@@ -76,7 +77,13 @@ For the generator see mrmEvgSetupVME() or the ::evgMrm class.
 
 @section changelog Changelog
 
-@subsection v221 2.2.1 (UNRELEASED)
+@subsection v221 2.3.0 (Apr 2020)
+
+@li Add support for mTCA-EVM-300
+@li Add safety checks to flash firmware update process
+@li Allow iocsh redirection to file (eg. of dbior output)
+@li Bug fixes and DB enhancements (Luka Krmpotić)
+@li Set SHRLIB_VERSION
 
 @subsection v220 2.2.0 (Oct. 2017)
 
@@ -258,6 +265,8 @@ For the generator see mrmEvgSetupVME() or the ::evgMrm class.
 @author Dirk Zimoch <dirk.zimoch@psi.ch>
 
 @author Anton Derbenev <aderbenev@bnl.gov>
+
+@author Luka Krmpotić <luka.krmpotic@cosylab.com>
 
 */
 

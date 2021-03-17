@@ -12,30 +12,30 @@
 
 file "mrmevrbase.template"
 {
-{P="$(SYS){$(D)}", PSRC="$(SYS){$(D)}Src:", PCNT="$(SYS){$(D)}Cnt:", PLINK="$(SYS){$(D)}Link:", PRATE="$(SYS){$(D)}Rate:", PTIME="$(SYS){$(D)}Time:", OBJ="$(EVR)", OBJBUFRX="$(EVR):BUFRX", EVNT1HZ="\$(EVNT1HZ=125)", FEVT="\$(FEVT=124.916)"}
+{P="$(SYS){$(D)}", OBJ="$(EVR)", EVNT1HZ="\$(EVNT1HZ=125)", FEVT="\$(FEVT=124.916)"}
 }
 
 file "databuftx.db"
 {pattern
 {P, OBJ, PROTO}
-{"$(SYS){$(D)}dbus:send:", "$(EVR):BUFTX", 1}
+{"$(SYS){$(D)}", "$(EVR):BUFTX", 1}
 }
 
 file "databuftxCtrl.db"
 {pattern
 {P, OBJ}
-{"$(SYS){$(D)}Link:", "$(EVR):BUFTX"}
+{"$(SYS){$(D)}", "$(EVR):BUFTX"}
 }
 
 file "mrmevrbufrx.db"
 {pattern
 {P, OBJ, PROTO}
-{"$(SYS){$(D)}dbus:recv:", $(EVR):BUFRX, 0xff00}
+{"$(SYS){$(D)}", $(EVR):BUFRX, 0xff00}
 }
 
 file "sfp.db"
 {
-{P="$(SYS){$(D)-SFP}", PPWR="$(SYS){$(D)-SFP}Pwr:", PSPEED="$(SYS){$(D)-SFP}Speed:", PDATE="$(SYS){$(D)-SFP}Date:", OBJ="$(EVR):SFP"}
+{P="$(SYS){$(D)-SFP}", OBJ="$(EVR):SFP"}
 }
 
 file "evrmap.db"
@@ -63,27 +63,27 @@ file "evrevent.db"
 file "evrscale.db"
 {pattern
 {IDX, P, SN, OBJ, MAX}
-{0, "$(SYS){$(D)}Link:", "$(SYS){$(D)-PS:$(IDX)}", "$(EVR):PS$(IDX)", "0xffffffff"}
-{1, "$(SYS){$(D)}Link:", "$(SYS){$(D)-PS:$(IDX)}", "$(EVR):PS$(IDX)", "0xffffffff"}
-{2, "$(SYS){$(D)}Link:", "$(SYS){$(D)-PS:$(IDX)}", "$(EVR):PS$(IDX)", "0xffffffff"}
+{0, "$(SYS){$(D)}", "$(SYS){$(D)-PS:$(IDX)}", "$(EVR):PS$(IDX)", "0xffffffff"}
+{1, "$(SYS){$(D)}", "$(SYS){$(D)-PS:$(IDX)}", "$(EVR):PS$(IDX)", "0xffffffff"}
+{2, "$(SYS){$(D)}", "$(SYS){$(D)-PS:$(IDX)}", "$(EVR):PS$(IDX)", "0xffffffff"}
 }
 
 file "mrmevrout.db"
 {pattern
-{ON, ONSRC, OBJ, DESC}
-{"$(SYS){$(D)-Out:Int}", "$(SYS){$(D)-Out:Int}Src:", "$(EVR):Int", "Internal"}
-{"$(SYS){$(D)-Out:FPUV0}", "$(SYS){$(D)-Out:FPUV0}Src:", "$(EVR):FrontUnivOut0", "UNIV0"}
-{"$(SYS){$(D)-Out:FPUV1}", "$(SYS){$(D)-Out:FPUV1}Src:", "$(EVR):FrontUnivOut1", "UNIV1"}
-{"$(SYS){$(D)-Out:FPUV2}", "$(SYS){$(D)-Out:FPUV2}Src:", "$(EVR):FrontUnivOut2", "UNIV2"}
-{"$(SYS){$(D)-Out:FPUV3}", "$(SYS){$(D)-Out:FPUV3}Src:", "$(EVR):FrontUnivOut3", "UNIV3"}
-{"$(SYS){$(D)-Out:FPUV4}", "$(SYS){$(D)-Out:FPUV4}Src:", "$(EVR):FrontUnivOut4", "UNIV4"}
-{"$(SYS){$(D)-Out:FPUV5}", "$(SYS){$(D)-Out:FPUV5}Src:", "$(EVR):FrontUnivOut5", "UNIV5"}
-{"$(SYS){$(D)-Out:FPUV6}", "$(SYS){$(D)-Out:FPUV6}Src:", "$(EVR):FrontUnivOut6", "UNIV6"}
-{"$(SYS){$(D)-Out:FPUV7}", "$(SYS){$(D)-Out:FPUV7}Src:", "$(EVR):FrontUnivOut7", "UNIV7"}
-{"$(SYS){$(D)-Out:FPUV8}", "$(SYS){$(D)-Out:FPUV8}Src:", "$(EVR):FrontUnivOut8", "UNIV8"}
-{"$(SYS){$(D)-Out:FPUV9}", "$(SYS){$(D)-Out:FPUV9}Src:", "$(EVR):FrontUnivOut9", "UNIV9"}
-{"$(SYS){$(D)-Out:FPUV10}", "$(SYS){$(D)-Out:FPUV10}Src:", "$(EVR):FrontUnivOut10","UNIV10"}
-{"$(SYS){$(D)-Out:FPUV11}", "$(SYS){$(D)-Out:FPUV11}Src:", "$(EVR):FrontUnivOut11","UNIV11"}
+{ON, OBJ, DESC}
+{"$(SYS){$(D)-Out:Int}", "$(EVR):Int", "Internal"}
+{"$(SYS){$(D)-Out:FPUV0}", "$(EVR):FrontUnivOut0", "UNIV0"}
+{"$(SYS){$(D)-Out:FPUV1}", "$(EVR):FrontUnivOut1", "UNIV1"}
+{"$(SYS){$(D)-Out:FPUV2}", "$(EVR):FrontUnivOut2", "UNIV2"}
+{"$(SYS){$(D)-Out:FPUV3}", "$(EVR):FrontUnivOut3", "UNIV3"}
+{"$(SYS){$(D)-Out:FPUV4}", "$(EVR):FrontUnivOut4", "UNIV4"}
+{"$(SYS){$(D)-Out:FPUV5}", "$(EVR):FrontUnivOut5", "UNIV5"}
+{"$(SYS){$(D)-Out:FPUV6}", "$(EVR):FrontUnivOut6", "UNIV6"}
+{"$(SYS){$(D)-Out:FPUV7}", "$(EVR):FrontUnivOut7", "UNIV7"}
+{"$(SYS){$(D)-Out:FPUV8}", "$(EVR):FrontUnivOut8", "UNIV8"}
+{"$(SYS){$(D)-Out:FPUV9}", "$(EVR):FrontUnivOut9", "UNIV9"}
+{"$(SYS){$(D)-Out:FPUV10}","$(EVR):FrontUnivOut10","UNIV10"}
+{"$(SYS){$(D)-Out:FPUV11}","$(EVR):FrontUnivOut11","UNIV11"}
 }
 
 file "mrmevroutint.db"
@@ -94,21 +94,21 @@ file "mrmevroutint.db"
 # Pulse generators w/o a prescaler set NOPS=1
 file "evrpulser.db"
 {pattern
-{PID, P, PLINK, PN, PNDELAY, PNWIDTH, OBJ, DMAX, WMAX, PMAX, NOPS}
-{0, "$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffffff", "0xffffffff", "0xffff", 0}
-{1, "$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffffff", "0xffffffff", "0xffff", 0}
-{2, "$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffffff", "0xffffffff", "0xffff", 0}
-{3, "$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffffff", "0xffffffff", "0xffff", 0}
-{4, "$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffffff", "0xffff", "1", 1}
-{5, "$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffffff", "0xffff", "1", 1}
-{6, "$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffffff", "0xffff", "1", 1}
-{7, "$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffffff", "0xffff", "1", 1}
-{8, "$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffffff", "0xffff", "1", 1}
-{9, "$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffffff", "0xffff", "1", 1}
-{10,"$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffff", "0xffff", "1", 1}
-{11,"$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffff", "0xffff", "1", 1}
-{12,"$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffff", "0xffff", "1", 1}
-{13,"$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffff", "0xffff", "1", 1}
+{PID, P, PN, OBJ, DMAX, WMAX, PMAX, NOPS}
+{0, "$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffffff", "0xffffffff", "0xffff", 0}
+{1, "$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffffff", "0xffffffff", "0xffff", 0}
+{2, "$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffffff", "0xffffffff", "0xffff", 0}
+{3, "$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffffff", "0xffffffff", "0xffff", 0}
+{4, "$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffffff", "0xffff", "1", 1}
+{5, "$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffffff", "0xffff", "1", 1}
+{6, "$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffffff", "0xffff", "1", 1}
+{7, "$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffffff", "0xffff", "1", 1}
+{8, "$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffffff", "0xffff", "1", 1}
+{9, "$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffffff", "0xffff", "1", 1}
+{10,"$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffff", "0xffff", "1", 1}
+{11,"$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffff", "0xffff", "1", 1}
+{12,"$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffff", "0xffff", "1", 1}
+{13,"$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffff", "0xffff", "1", 1}
 }
 
 # Default to 3 possible trigger mappings per pulser
@@ -161,7 +161,7 @@ file "evrpulsermap.db"
 
 file "evrin.db"
 {pattern
-{IN, INTRIG, INCODE, OBJ, DESC}
-{"$(SYS){$(D)-In:0}", "$(SYS){$(D)-In:0}Trig:", "$(SYS){$(D)-In:0}Code:", "$(EVR):FPIn0", "IN0 (TTL)"}
-{"$(SYS){$(D)-In:1}", "$(SYS){$(D)-In:1}Trig:", "$(SYS){$(D)-In:1}Code:", "$(EVR):FPIn1", "IN1 (TTL)"}
+{IN, OBJ, DESC}
+{"$(SYS){$(D)-In:0}", "$(EVR):FPIn0", "IN0 (TTL)"}
+{"$(SYS){$(D)-In:1}", "$(EVR):FPIn1", "IN1 (TTL)"}
 }

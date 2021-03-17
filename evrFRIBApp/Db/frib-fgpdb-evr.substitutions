@@ -11,7 +11,7 @@
 
 file "evrbase.db"
 {
-{P="\$(SYS){\$(D)}", PCNT="\$(SYS){\$(D)}Cnt:", PLINK="\$(SYS){\$(D)}Link:", PRATE="\$(SYS){\$(D)}Rate:", PTIME="\$(SYS){\$(D)}Time:", OBJ="\$(EVR)", OBJBUFRX="\$(EVR):BUFRX", FRF=80.5}
+{P="\$(SYS){\$(D)}", OBJ="\$(EVR)", FRF=80.5}
 }
 
 file "fribevrbase.db"
@@ -22,7 +22,7 @@ file "fribevrbase.db"
 file "evrscale.db"
 {pattern
 {IDX, P, SN, OBJ, MAX}
-{0, "$(SYS){$(D)}Link:", "$(SYS){$(D)-PS:$(IDX)}", "$(EVR):PS$(IDX)", "0xffff"}
+{0, "$(SYS){$(D)}", "$(SYS){$(D)-PS:$(IDX)}", "$(EVR):PS$(IDX)", "0xffff"}
 }
 
 file "fribevrout.db"
@@ -36,9 +36,9 @@ file "fribevrout.db"
 # Pulse generators w/o a prescaler set NOPS=1
 file "evrpulser.db"
 {pattern
-{PID, P, PLINK, PN, PNDELAY, PNWIDTH, OBJ, DMAX, WMAX, PMAX, NOPS}
-{0, "$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffffff", "0xffffffff", "0", 1}
-{1, "$(SYS){$(D)}", "$(SYS){$(D)}Link:", "$(SYS){$(D)-DlyGen:$(PID)}", "$(SYS){$(D)-DlyGen:$(PID)}Delay:", "$(SYS){$(D)-DlyGen:$(PID)}Width:", "$(EVR):Pul$(PID)", "0xffffffff", "0xffffffff", "0", 1}
+{PID, P, PN, OBJ, DMAX, WMAX, PMAX, NOPS}
+{0, "$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffffff", "0xffffffff", "0", 1}
+{1, "$(SYS){$(D)}", "$(SYS){$(D)-DlyGen:$(PID)}", "$(EVR):Pul$(PID)", "0xffffffff", "0xffffffff", "0", 1}
 }
 
 # Default to 3 possible trigger mappings per pulser

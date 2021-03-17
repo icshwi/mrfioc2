@@ -9,18 +9,6 @@ O.*/
 html/
 rtf
 *.local
-.DS_Store
-.vscode
-
-#documentation output
-epics-*
-*.pdf
-#*.aux
-#*.log
-#*.nav
-#*.tex
-#*.toc
-#*.vrb
 
 envPaths
 .project

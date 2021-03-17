@@ -13,21 +13,24 @@
 
 #include <evr/prescaler.h>
 
-class epicsShareClass MRMPreScaler : public PreScaler
+class epicsShareClass MRMPreScaler : public mrf::ObjectInst<MRMPreScaler,PreScaler>
 {
+    typedef mrf::ObjectInst<MRMPreScaler,PreScaler> base_t;
     volatile unsigned char* base;
 
 public:
-    MRMPreScaler(const std::string& n, EVR& o,volatile unsigned char* b):
-            PreScaler(n,o),base(b) {};
-    virtual ~MRMPreScaler(){};
+    MRMPreScaler(const std::string& n, EVR& o,volatile unsigned char* b);
+    virtual ~MRMPreScaler();
 
     /* no locking needed */
-    virtual void lock() const{};
-    virtual void unlock() const{};
+    virtual void lock() const OVERRIDE FINAL{};
+    virtual void unlock() const OVERRIDE FINAL{};
 
-    virtual epicsUInt32 prescaler() const;
-    virtual void setPrescaler(epicsUInt32);
+    virtual epicsUInt32 prescaler() const OVERRIDE FINAL;
+    virtual void setPrescaler(epicsUInt32) OVERRIDE FINAL;
+
+    epicsUInt32 prescalerPhasOffs() const;
+    void setPrescalerPhasOffs(epicsUInt32);
 };
 
 #endif // MRMEVRPRESCALER_H_INC

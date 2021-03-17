@@ -190,6 +190,7 @@
 #  define ScalerMax 3
 /* 0 <= N <= 2 */
 #define U32_Scaler(N)   (U32_ScalerN + (4*(N)))
+#  define ScalerPhasOffs_offset 0x20
 
 #define U32_PulserNCtrl 0x200
 #define U32_PulserNScal 0x204
@@ -199,10 +200,10 @@
 
 /* 0 <= N <= 15 */
 #define U32_PulserCtrl(N) (U32_PulserNCtrl + (16*(N)))
-#  define PulserCtrl_masks 0xff0000
-#  define PulserCtrl_masks_shift 16
-#  define PulserCtrl_enables 0xff00
-#  define PulserCtrl_enables_shift 8
+#  define PulserCtrl_masks         0xf0000000
+#  define PulserCtrl_masks_shift   28
+#  define PulserCtrl_enables       0x00f00000
+#  define PulserCtrl_enables_shift 20
 #  define PulserCtrl_ena  0x01
 #  define PulserCtrl_mtrg 0x02
 #  define PulserCtrl_mset 0x04
@@ -353,7 +354,7 @@
 #define MappingRamBlockSet       0x8
 #define MappingRamBlockReset     0xc
 
-#define U32__MappingRam(M,E,N) (U32_MappingRam_base + (0x2000*(M)) + (0x10*(E)) + (N))
+#define U32__MappingRam(M,E,N) (U32_MappingRam_base + (0x1000*(M)) + (0x10*(E)) + (N))
 #define U32_MappingRam(M,E,N) U32__MappingRam(M,E, MappingRamBlock##N)
 
 // MappingRam actions
